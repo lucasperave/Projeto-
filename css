@@ -1,4 +1,4 @@
-css = """* { box-sizing: border-box; }
+css = * { box-sizing: border-box; }
 
 :root {
   --bg: #080d16;
@@ -230,4 +230,3 @@ footer {
   .about-stats { gap: 25px; }
   footer { flex-direction: column; padding: 22px 17px; }
 }
-"""

@@ -1,0 +1,416 @@
+css = """* { box-sizing: border-box; }
+
+:root {
+  --bg: #080d16;
+  --panel: #142334;
+  --lime: #b7f34a;
+  --cyan: #5ee7df;
+  --text: #f3f7f8;
+  --muted: #91a2b2;
+  --line: #263747;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, Arial, sans-serif;
+}
+
+.topbar {
+  min-height: 76px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.brand-mark {
+  color: var(--lime);
+  border: 1px solid #6f9b37;
+  border-radius: 8px;
+  padding: 8px;
+  font: 800 19px Orbitron, sans-serif;
+}
+.brand b { color: var(--lime); }
+.api-link, footer a {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+main { max-width: 1250px; margin: auto; padding: 0 35px; }
+
+.hero {
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 55px 4% 75px;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.hero-copy { max-width: 550px; z-index: 1; }
+.eyebrow {
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+h1, h2 { font-family: Orbitron, Inter, sans-serif; }
+h1 { font-size: clamp(42px, 6vw, 76px); line-height: 1.04; margin: 18px 0; }
+h1 span, h2 span { color: var(--lime); }
+.hero-text { color: var(--muted); font-size: 14px; line-height: 1.8; max-width: 450px; }
+.primary-button, .search-button {
+  display: inline-block;
+  background: var(--lime);
+  color: #11190a;
+  border: 0;
+  border-radius: 4px;
+  padding: 15px 18px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.primary-button { margin-top: 18px; }
+.hero-art {
+  width: 350px;
+  height: 320px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-right: 5%;
+}
+.portal { position: absolute; border-radius: 50%; transform: rotate(-25deg); }
+.portal-back {
+  width: 220px; height: 290px;
+  border: 14px solid #2c897e;
+  box-shadow: 0 0 30px #4ee5d455;
+}
+.portal-front {
+  width: 185px; height: 250px;
+  border: 8px solid var(--cyan);
+  box-shadow: 0 0 45px #5ee7df88, inset 0 0 40px #5ee7df66;
+}
+.planet {
+  position: absolute; top: 20px; right: 40px;
+  width: 25px; height: 25px; border-radius: 50%;
+  background: var(--lime); box-shadow: 0 0 20px var(--lime);
+}
+.hero-stamp {
+  position: absolute; right: -20px; bottom: 15px;
+  color: var(--muted); font-size: 9px; letter-spacing: 2px; line-height: 1.7;
+}
+.hero-stamp strong { color: var(--lime); font: 700 20px Orbitron, sans-serif; }
+.hero-bottom {
+  position: absolute; bottom: 18px; left: 4%; right: 4%;
+  display: flex; justify-content: space-between;
+  color: var(--muted); font-size: 9px; letter-spacing: 1px;
+}
+.hero-bottom i { color: var(--lime); font-style: normal; }
+
+.explore-section { padding: 70px 4%; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+.section-heading h2, .about h2 { font-size: clamp(21px, 3vw, 31px); margin: 10px 0; }
+.live-tag {
+  color: var(--lime); border: 1px solid #b7f34a55;
+  padding: 10px; font-size: 9px; letter-spacing: 1px;
+}
+.toolbar { display: flex; gap: 12px; margin: 30px 0 16px; }
+.search-box, .filter-box {
+  height: 48px; display: flex; align-items: center; gap: 10px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 4px; padding: 0 13px;
+}
+.search-box { flex: 1; color: var(--cyan); font-size: 23px; }
+.search-box input {
+  flex: 1; min-width: 0; background: none; border: 0;
+  outline: 0; color: white; font: 12px Inter, sans-serif;
+}
+.filter-box { color: var(--muted); font-size: 8px; letter-spacing: 1px; }
+.filter-box select { background: transparent; color: white; border: 0; outline: 0; }
+.filter-box option { background: var(--panel); }
+.search-button { height: 48px; }
+.results-line {
+  display: flex; justify-content: space-between;
+  color: var(--muted); font-size: 10px; margin-bottom: 15px;
+}
+.character-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px; min-height: 170px;
+}
+.character-card {
+  background: linear-gradient(145deg, #172638, #0f1926);
+  border: 1px solid var(--line); border-radius: 7px; overflow: hidden;
+  transition: .2s;
+}
+.character-card:hover { transform: translateY(-5px); border-color: #b7f34a88; }
+.card-image-wrap { height: 185px; position: relative; background: #1b2b3c; }
+.card-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-id {
+  position: absolute; top: 10px; left: 10px;
+  background: #08111dcc; color: var(--lime); padding: 5px 7px; font-size: 9px;
+}
+.card-info { padding: 13px; }
+.card-name { font: 600 12px Orbitron, sans-serif; min-height: 32px; margin: 0 0 12px; }
+.meta-row {
+  display: flex; justify-content: space-between; gap: 8px;
+  color: var(--muted); font-size: 10px; margin-top: 8px;
+}
+.meta-row strong { color: #e5edf1; text-align: right; }
+.status { display: inline-flex; align-items: center; gap: 5px; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #9aa5ad; }
+.status.alive .status-dot { background: var(--lime); }
+.status.dead .status-dot { background: #ff6b72; }
+.message { text-align: center; padding: 30px; color: var(--muted); font-size: 12px; }
+.message.error { color: #ff9297; }
+.pagination { display: flex; justify-content: center; align-items: center; gap: 22px; margin-top: 25px; }
+.page-button {
+  background: transparent; border: 1px solid var(--line); color: white;
+  border-radius: 4px; padding: 12px 16px; font-size: 9px; cursor: pointer;
+}
+.page-button:disabled { opacity: .35; cursor: not-allowed; }
+#pageLabel { color: var(--muted); font-size: 9px; }
+
+.about {
+  display: grid; grid-template-columns: 65px 1fr auto; gap: 24px;
+  align-items: center; padding: 32px 4%; margin: 10px 0 60px;
+  background: #142334; border: 1px solid var(--line); border-radius: 8px;
+}
+.about-icon {
+  width: 58px; height: 58px; display: grid; place-items: center;
+  background: #b7f34a18; border: 1px solid #b7f34a66;
+  color: var(--lime); font-size: 27px; border-radius: 10px;
+}
+.about p:not(.eyebrow) { color: var(--muted); font-size: 11px; line-height: 1.7; max-width: 600px; }
+.about-stats { display: flex; gap: 24px; }
+.about-stats div { display: grid; gap: 6px; }
+.about-stats strong { color: var(--lime); font: 700 19px Orbitron, sans-serif; }
+.about-stats small { color: var(--muted); font-size: 8px; letter-spacing: 1px; }
+footer {
+  border-top: 1px solid var(--line); padding: 24px 7%;
+  display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap;
+  color: var(--muted); font-size: 9px; letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+  .character-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero-art { transform: scale(.8); margin-right: -20px; }
+}
+@media (max-width: 650px) {
+  main { padding: 0 17px; }
+  .topbar { padding: 0 17px; }
+  .brand { font-size: 8px; }
+  .api-link { font-size: 7px; }
+  .hero { min-height: 500px; padding: 50px 3% 70px; }
+  .hero-art { position: absolute; right: -120px; bottom: 0; opacity: .3; }
+  .section-heading { align-items: start; flex-direction: column; }
+  .toolbar { flex-wrap: wrap; }
+  .search-box { flex-basis: 100%; }
+  .filter-box, .search-button { flex: 1; }
+  .character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .card-image-wrap { height: 145px; }
+  .card-info { padding: 10px; }
+  .card-name { font-size: 10px; }
+  .meta-row { font-size: 9px; }
+  .about { grid-template-columns: 1fr; padding: 22px; }
+  .about-stats { gap: 25px; }
+  footer { flex-direction: column; padding: 22px 17px; }
+}
+"""
+
+js = """const API_URL = "https://rickandmortyapi.com/api/character";
+
+const grid = document.getElementById("characterGrid");
+const message = document.getElementById("message");
+const resultCount = document.getElementById("resultCount");
+const pageIndicator = document.getElementById("pageIndicator");
+const pageLabel = document.getElementById("pageLabel");
+const searchInput = document.getElementById("searchInput");
+const statusFilter = document.getElementById("statusFilter");
+const searchButton = document.getElementById("searchButton");
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+
+let currentPage = 1;
+let totalPages = 1;
+let currentName = "";
+let currentStatus = "";
+
+function showMessage(text, isError = false) {
+  message.textContent = text;
+  message.className = isError ? "message error" : "message";
+  message.hidden = false;
+}
+
+function createMetaRow(label, value) {
+  const row = document.createElement("div");
+  row.className = "meta-row";
+
+  const labelElement = document.createElement("span");
+  labelElement.textContent = label;
+
+  const valueElement = document.createElement("strong");
+  valueElement.textContent = value;
+
+  row.append(labelElement, valueElement);
+  return row;
+}
+
+function translateStatus(status) {
+  const translations = {
+    Alive: "Vivo",
+    Dead: "Morto",
+    unknown: "Desconhecido"
+  };
+
+  return translations[status] || status;
+}
+
+function createCharacterCard(character) {
+  // Cria cada card dinamicamente com os dados recebidos da API.
+  const card = document.createElement("article");
+  card.className = "character-card";
+
+  const imageWrap = document.createElement("div");
+  imageWrap.className = "card-image-wrap";
+
+  const image = document.createElement("img");
+  image.className = "card-image";
+  image.src = character.image;
+  image.alt = `Imagem de ${character.name}`;
+  image.loading = "lazy";
+
+  const id = document.createElement("span");
+  id.className = "card-id";
+  id.textContent = `#${character.id}`;
+
+  imageWrap.append(image, id);
+
+  const info = document.createElement("div");
+  info.className = "card-info";
+
+  const name = document.createElement("h3");
+  name.className = "card-name";
+  name.textContent = character.name;
+
+  const statusRow = document.createElement("div");
+  statusRow.className = "meta-row";
+
+  const statusLabel = document.createElement("span");
+  statusLabel.textContent = "Status";
+
+  const statusValue = document.createElement("strong");
+  const statusClass = character.status.toLowerCase() === "alive" ? "alive"
+    : character.status.toLowerCase() === "dead" ? "dead" : "";
+  statusValue.className = `status ${statusClass}`;
+
+  const dot = document.createElement("i");
+  dot.className = "status-dot";
+
+  const statusText = document.createElement("span");
+  statusText.textContent = translateStatus(character.status);
+
+  statusValue.append(dot, statusText);
+  statusRow.append(statusLabel, statusValue);
+
+  info.append(
+    name,
+    statusRow,
+    createMetaRow("Espécie", character.species),
+    createMetaRow("Origem", character.origin?.name || "Desconhecida")
+  );
+
+  card.append(imageWrap, info);
+  return card;
+}
+
+async function loadCharacters(page = 1) {
+  currentPage = page;
+  grid.replaceChildren();
+  showMessage("Consultando a API e carregando personagens...");
+
+  resultCount.textContent = "Buscando dados...";
+  prevButton.disabled = true;
+  nextButton.disabled = true;
+
+  const params = new URLSearchParams({ page: String(page) });
+
+  if (currentName) params.set("name", currentName);
+  if (currentStatus) params.set("status", currentStatus);
+
+  try {
+    const response = await fetch(`${API_URL}?${params.toString()}`);
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Nenhum personagem encontrado. Tente outro nome ou filtro.");
+      }
+      throw new Error(`A API respondeu com o status ${response.status}.`);
+    }
+
+    const data = await response.json();
+    totalPages = data.info.pages;
+
+    data.results.forEach(character => {
+      const card = createCharacterCard(character);
+      grid.appendChild(card);
+    });
+
+    message.hidden = true;
+    resultCount.textContent = `${data.info.count} personagem(ns) encontrado(s)`;
+    pageIndicator.textContent = `${data.results.length} exibidos nesta página`;
+    pageLabel.textContent = `PÁGINA ${currentPage} DE ${totalPages}`;
+
+    prevButton.disabled = currentPage <= 1;
+    nextButton.disabled = currentPage >= totalPages;
+  } catch (error) {
+    grid.replaceChildren();
+    resultCount.textContent = "Consulta não concluída";
+    pageIndicator.textContent = "";
+    pageLabel.textContent = `PÁGINA ${currentPage}`;
+    showMessage(
+      error.message || "Não foi possível conectar à API. Verifique sua internet e tente novamente.",
+      true
+    );
+  }
+}
+
+function searchCharacters() {
+  currentName = searchInput.value.trim();
+  currentStatus = statusFilter.value;
+  loadCharacters(1);
+}
+
+searchButton.addEventListener("click", searchCharacters);
+
+searchInput.addEventListener("keydown", event => {
+  if (event.key === "Enter") searchCharacters();
+});
+
+statusFilter.addEventListener("change", searchCharacters);
+
+prevButton.addEventListener("click", () => {
+  if (currentPage > 1) loadCharacters(currentPage - 1);
+});
+
+nextButton.addEventListener("click", () => {
+  if (currentPage < totalPages) loadCharacters(currentPage + 1);
+});
+
+// Carrega os primeiros personagens quando a página abre.
+loadCharacters();
+"""

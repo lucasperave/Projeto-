@@ -1,4 +1,3 @@
-
 js = """const API_URL = "https://rickandmortyapi.com/api/character";
 
 const grid = document.getElementById("characterGrid");

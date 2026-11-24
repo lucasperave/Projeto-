@@ -1,4 +1,4 @@
-js = """const API_URL = "https://rickandmortyapi.com/api/character";
+js = const API_URL = "https://rickandmortyapi.com/api/character";
 
 const grid = document.getElementById("characterGrid");
 const message = document.getElementById("message");
@@ -179,4 +179,3 @@ nextButton.addEventListener("click", () => {
 
 // Carrega os primeiros personagens quando a página abre.
 loadCharacters();
-"""

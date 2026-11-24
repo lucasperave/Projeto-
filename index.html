@@ -1,0 +1,88 @@
+from pathlib import Path
+import zipfile, os
+
+root = Path("/mnt/data/portal_interdimensional_github")
+(root/"css").mkdir(parents=True, exist_ok=True)
+(root/"js").mkdir(parents=True, exist_ok=True)
+
+html = """<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore personagens de Rick and Morty usando uma API pública.">
+  <title>Portal Interdimensional | Rick and Morty</title>
+  <link rel="preconnect" href="https://rickandmortyapi.com">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">R✦M</span><span>PORTAL <b>INTERDIMENSIONAL</b></span></a>
+    <a class="api-link" href="https://rickandmortyapi.com/documentation" target="_blank" rel="noopener">DOCUMENTAÇÃO DA API ↗</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">● ACESSO AO MULTIVERSO LIBERADO</p>
+        <h1>EXPLORE O<br><span>MULTIVERSO</span></h1>
+        <p class="hero-text">Conheça personagens, espécies e dimensões. Os dados são carregados diretamente da API de Rick and Morty.</p>
+        <a class="primary-button" href="#explorar">EXPLORAR PERSONAGENS ↓</a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="portal portal-back"></div><div class="portal portal-front"></div>
+        <div class="planet"></div><div class="hero-stamp">DIMENSION<br><strong>C-137</strong></div>
+      </div>
+      <div class="hero-bottom"><span>STATUS DO SISTEMA: ONLINE</span><span>API CONNECTION <i>●</i></span></div>
+    </section>
+
+    <section class="explore-section" id="explorar">
+      <div class="section-heading">
+        <div><p class="eyebrow">BANCO DE DADOS INTERDIMENSIONAL</p><h2>PERSONAGENS <span>ENCONTRADOS</span></h2></div>
+        <span class="live-tag">● DADOS AO VIVO</span>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-box" for="searchInput">
+          <span>⌕</span><input id="searchInput" type="search" placeholder="Buscar personagem..." autocomplete="off">
+        </label>
+        <label class="filter-box" for="statusFilter">STATUS
+          <select id="statusFilter">
+            <option value="">Todos</option><option value="Alive">Vivo</option>
+            <option value="Dead">Morto</option><option value="unknown">Desconhecido</option>
+          </select>
+        </label>
+        <button id="searchButton" class="search-button">BUSCAR</button>
+      </div>
+
+      <div class="results-line"><span id="resultCount">Preparando conexão...</span><span id="pageIndicator"></span></div>
+      <div id="characterGrid" class="character-grid" aria-live="polite"></div>
+      <div id="message" class="message" role="status">Conectando ao banco de dados interdimensional...</div>
+
+      <div class="pagination">
+        <button id="prevButton" class="page-button" disabled>← ANTERIOR</button>
+        <span id="pageLabel">PÁGINA 1</span>
+        <button id="nextButton" class="page-button" disabled>PRÓXIMA →</button>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-icon">⌘</div>
+      <div>
+        <p class="eyebrow">SOBRE O PROJETO</p>
+        <h2>TECNOLOGIA CONECTANDO <span>UNIVERSOS</span></h2>
+        <p>Esta aplicação demonstra o consumo de uma API pública com JavaScript. As informações e os cards são criados dinamicamente, sem dados fixos no HTML.</p>
+      </div>
+      <div class="about-stats"><div><strong>100%</strong><small>DINÂMICO</small></div><div><strong>API</strong><small>REST</small></div><div><strong>3</strong><small>TECNOLOGIAS</small></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>PORTAL INTERDIMENSIONAL © 2026</span>
+    <span>HTML • CSS • JAVASCRIPT</span>
+    <a href="https://rickandmortyapi.com/" target="_blank" rel="noopener">DADOS: RICK AND MORTY API ↗</a>
+  </footer>
+</body>
+</html>
+"""
